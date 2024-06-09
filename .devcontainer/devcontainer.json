@@ -3,11 +3,8 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-	
 	// Features to add to the dev container. More info: https://containers.dev/implementors/features.
-	"features": {
-	},
-
+	"features": {},
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -23,22 +20,23 @@
 			]
 		}
 	},
-
 	// For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
 	"forwardPorts": [
 		80,
+		443,
 		81,
 		3306
 	],
-
 	"postCreateCommand": "./.devcontainer/postCreateCommand.sh > .devcontainer/postCreateCommand.log  && code - r wordpress/wp-content/plugins/wp-codespace/wp-codespace.php",
-
 	"portsAttributes": {
 		"3306": {
 			"label": "Database (internal)"
 		},
 		"80": {
 			"label": "WordPress"
+		},
+		"443": {
+			"label": "WordPress ssl"
 		},
 		"81": {
 			"label": "phpMyAdmin"
