@@ -4,10 +4,12 @@ REPO_FOLDER="/workspaces/$RepositoryName"
 # Apache
 sudo chmod 777 /etc/apache2/sites-available/000-default.conf
 sudo sed "s@.*DocumentRoot.*@\tDocumentRoot $PWD/wordpress@" .devcontainer/000-default.conf > /etc/apache2/sites-available/000-default.conf
+sudo chmod 777 /etc/apache2/sites-available/default-ssl.conf
+sudo sed "s@.*DocumentRoot.*@\tDocumentRoot $PWD/wordpress@" .devcontainer/default-ssl.conf > /etc/apache2/sites-available/default-ssl.conf
 update-rc.d apache2 defaults 
 service apache2 start
 
-LOCALE="de_DE"
+LOCALE="en_AU"
 
 # WordPress Core install
 wp core download --locale=$LOCALE --path=wordpress
